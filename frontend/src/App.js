@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Form } from "@unform/web";
+
+import Input from "./components/Input";
+
+import "./App.css";
+import logo from "./assets/logo.svg";
 
 function App() {
+  function handleSubmit(data, { reset }) {
+    console.log(data);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className='container'>
+      <img src={logo} alt='AirCnC' />
+
+      <div className='content'>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Ofereça <strong>spots</strong> para programadores e encontre{" "}
+          <strong>talentos</strong> para as empresas
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <Form onSubmit={handleSubmit}>
+          <Input
+            name='email'
+            id='email'
+            placeholder='Seu melhor e-mail'
+            label='E-MAIL *'
+          />
+
+          <button type='submit' className='btn'>
+            Cadastrar
+          </button>
+        </Form>
+      </div>
     </div>
   );
 }
