@@ -1,14 +1,20 @@
 import React from "react";
 import { Form } from "@unform/web";
 
+import api from "./services/api";
+
 import Input from "./components/Input";
 
 import "./App.css";
 import logo from "./assets/logo.svg";
 
 function App() {
-  function handleSubmit(data, { reset }) {
-    console.log(data);
+  async function handleSubmit(data, { reset }) {
+    const response = await api.post("/sessions", {
+      email: data.email
+    });
+
+    const { _id } = response.data;
   }
 
   return (
